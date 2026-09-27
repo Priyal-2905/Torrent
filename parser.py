@@ -3,17 +3,17 @@
 import pprint
 
 def parse_int(data, i):
-    assert data[i] == ord('i')
+    assert data[i] == ord('i') # ord function gives ASKII value
     i += 1
-    j = data.index(b'e', i)
-    val = int(data[i:j].decode())
+    j = data.index(b'e', i)# 'b' data is in bytes format
+    val = int(data[i:j].decode())#.decode() convert byte to string
     return val, j+1
 
 def parse_str(data, i):
     j = data.index(b':', i)
     length = int(data[i:j])
     j += 1
-    s = data[j:j+length]
+    s = data[j:j+length] #stays in byte format # error on decode
     return s, j+length
 
 def parse_list(data, i):
@@ -60,7 +60,7 @@ def bdecode(data):
 
 def bencode(data):
     if isinstance(data, int):
-        return b'i' + str(data).encode() + b'e'
+        return b'i' + str(data).encode() + b'e' #.encode() convert data to bytes format
     elif isinstance(data, bytes):
         return str(len(data)).encode() + b':' + data
     elif isinstance(data, str):
@@ -91,3 +91,8 @@ with open('test.torrent', 'rb') as f:
 
 decoded = bdecode(torrent_data)
 pprint.pprint(decoded[b'info'])
+
+# print(bdecode(b"i42e"))
+# print(bdecode(b"5:hello"))
+# print(bdecode(b"l4:spam4:eggse"))
+# pprint.pprint(bdecode(b"d3:cow3:moo4:spam4:eggse"))
