@@ -5,13 +5,14 @@ import pprint
 
 def calculate_info_hash(torrent_file_path):
     
-    with open(torrent_file_path, 'rb') as f:
+    with open(torrent_file_path, 'rb') as f: # rb => read binary
         torrent_data = f.read()
     
     decoded = bdecode(torrent_data)
     
     if b'info' not in decoded:
         raise ValueError("Torrent file does not contain 'info' dictionary")
+    
     info_dict = decoded[b'info']
  
     info_bencoded = bencode(info_dict)
@@ -24,9 +25,6 @@ def calculate_info_hash(torrent_file_path):
 try:
     torrent_file = 'test.torrent'
     
-    with open(torrent_file, 'rb') as f:
-        torrent_data = f.read()
-
     info_hash = calculate_info_hash(torrent_file)
     print("\nInfo Hash (hex):", info_hash.hex())
     print("Info Hash (raw bytes):", info_hash)

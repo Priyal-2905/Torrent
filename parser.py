@@ -86,13 +86,16 @@ def bencode(data):
     else:
         raise ValueError(f"Unsupported type for bencoding: {type(data)}")
     
-with open('test.torrent', 'rb') as f:
+with open('hollow.torrent', 'rb') as f:
     torrent_data = f.read()
 
 decoded = bdecode(torrent_data)
-pprint.pprint(decoded[b'info'])
+# pprint.pprint(decoded[b'info'])
 
-# print(bdecode(b"i42e"))
-# print(bdecode(b"5:hello"))
-# print(bdecode(b"l4:spam4:eggse"))
-# pprint.pprint(bdecode(b"d3:cow3:moo4:spam4:eggse"))
+
+# info = decoded[b'info'].copy()
+# info.pop(b'pieces', None)
+
+# # info = decoded.copy()
+# # info.pop(b'info', None)
+# pprint.pprint(info)
