@@ -118,14 +118,11 @@ def get_peers_from_tracker(torrent_file_path, port=6881, numwant=50):
 if __name__ == "__main__":
     try:
         peers = get_peers_from_tracker('one-piece.torrent')
-
+        
         print(f"\nFound {len(peers)} peers from tracker:")
 
-        for ip, port in peers[:10]:
+        for ip, port in peers:
             print(f"  {ip}:{port}")
-
-        if len(peers) > 10:
-            print(f"  ... and {len(peers) - 10} more")
 
     except Exception as e:
         print(f"Error: {e}")
