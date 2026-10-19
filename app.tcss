@@ -1,0 +1,113 @@
+Screen {
+    background: $surface;
+}
+
+#app-grid {
+    layout: grid;
+    grid-size: 1;
+    grid-rows: auto auto 3 1fr 1fr;
+    padding: 1 2;
+    height: 100%;
+}
+
+/* ── Top Controls ── */
+#controls {
+    layout: horizontal;
+    height: 3;
+    align: left middle;
+    padding: 0 1;
+}
+
+#controls Input {
+    width: 1fr;
+    margin-right: 1;
+}
+
+#controls Button {
+    min-width: 12;
+    margin-right: 1;
+}
+
+#btn-start {
+    background: $success;
+}
+
+#btn-stop {
+    background: $error;
+}
+
+/* ── Torrent Info ── */
+#info-panel {
+    height: auto;
+    max-height: 8;
+    border: solid $primary;
+    padding: 0 1;
+    margin-bottom: 1;
+}
+
+#info-panel Static {
+    height: auto;
+}
+
+#info-title {
+    text-style: bold;
+    color: $accent;
+}
+
+/* ── Progress Section ── */
+#progress-section {
+    height: 3;
+    layout: horizontal;
+    align: left middle;
+    padding: 0 1;
+    margin-bottom: 1;
+}
+
+#progress-bar {
+    width: 1fr;
+    margin-right: 2;
+}
+
+#progress-label {
+    width: auto;
+    min-width: 30;
+    text-style: bold;
+}
+
+/* ── Peer Table ── */
+#peer-section {
+    height: 1fr;
+    min-height: 8;
+    border: solid $primary;
+    margin-bottom: 1;
+}
+
+#peer-title {
+    text-style: bold;
+    color: $accent;
+    padding: 0 1;
+    height: 1;
+}
+
+DataTable {
+    height: 1fr;
+}
+
+/* ── Log Section ── */
+#log-section {
+    height: 1fr;
+    min-height: 8;
+    border: solid $accent;
+}
+
+#log-title {
+    text-style: bold;
+    color: $accent;
+    padding: 0 1;
+    height: 1;
+}
+
+RichLog {
+    height: 1fr;
+    scrollbar-size: 1 1;
+}

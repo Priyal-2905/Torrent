@@ -22,14 +22,16 @@ def calculate_info_hash(torrent_file_path):
     return info_hash
 
 
-try:
-    torrent_file = 'test.torrent'
-    
-    info_hash = calculate_info_hash(torrent_file)
-    print("\nInfo Hash (hex):", info_hash.hex())
-    print("Info Hash (raw bytes):", info_hash)
-    
-except FileNotFoundError:
-    print(f"Error: The file '{torrent_file}' was not found.")
-except ValueError as e:
-    print(f"Error: {e}")
+
+if __name__ == "__main__":
+    try:
+        torrent_file = 'test.torrent'
+        
+        info_hash = calculate_info_hash(torrent_file)
+        print("\nInfo Hash (hex):", info_hash.hex())
+        print("Info Hash (raw bytes):", info_hash)
+        
+    except FileNotFoundError:
+        print(f"Error: The file '{torrent_file}' was not found.")
+    except ValueError as e:
+        print(f"Error: {e}")
