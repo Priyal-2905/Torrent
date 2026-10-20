@@ -86,16 +86,18 @@ def bencode(data):
     else:
         raise ValueError(f"Unsupported type for bencoding: {type(data)}")
     
-with open('one-piece.torrent', 'rb') as f:
-    torrent_data = f.read()
 
-decoded = bdecode(torrent_data)
-# pprint.pprint(decoded[b'info'])
+if __name__ == "__main__":
+    with open('one-piece.torrent', 'rb') as f:
+        torrent_data = f.read()
+
+    decoded = bdecode(torrent_data)
+    # pprint.pprint(decoded[b'info'])
 
 
-# info = decoded[b'info'].copy()
-# info.pop(b'pieces', None)
+    # info = decoded[b'info'].copy()
+    # info.pop(b'pieces', None)
 
-info = decoded.copy()
-info.pop(b'info', None)
-pprint.pprint(info)
+    info = decoded.copy()
+    info.pop(b'info', None)
+    pprint.pprint(info)
